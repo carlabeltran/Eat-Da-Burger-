@@ -1,5 +1,5 @@
 //IMPORT MYSQL CONNECTION
-var connection = require("../config/connection.js");
+const connection = require("../config/connection.js");
 
 //////////////////////////////////////////
 //////////////////////////////////////////
@@ -110,5 +110,5 @@ const orm = {
     }
 };
 
-//EXPORT THE ORM OBJECT FOR THE MODEL (BURGER.JS) 
+//EXPORT THE ORM OBJECT FOR THE MODEL(BURGER.JS) 
 module.exports = orm;

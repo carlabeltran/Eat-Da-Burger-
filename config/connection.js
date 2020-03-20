@@ -1,16 +1,15 @@
 const fs = require("fs");
 //SET UP MYSQL CONNECTION
-var mysql = require("mysql");
-
+const mysql = require("mysql");
+const dotenv = require("dotenv");
 require("dotenv").config(); 
 
-
-var connection = mysql.createConnection({
-    host: process.env.h,
-    port: process.env.p1,
-    user: process.env.us,
-    password: process.env.pw,
-    database: process.env.db
+const connection = mysql.createConnection({
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_DTB
 });
 
 //MAKE CONNECTION

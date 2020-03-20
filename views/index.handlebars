@@ -1,0 +1,72 @@
+<div class="container-fluid">
+    <h1>Eat-Da-Burger!</h1>
+    <div class="row">
+        <div class="col-12 col-lg-4 mb-5">
+            <div class="row">
+                <div class="col-11">
+                    <h2>{{ title }} a burger:</h2>
+                    <form action="{{action}}" method="POST">
+                        <div class="form-group py-3 mb-4">
+                            <label for="burger_name">Burger Name:</label>
+                            <input type="hidden" name="id" value="{{id}}">
+                            <input type="text" class="form-control form-control-lg" id="burger_name" name="name"
+                                value="{{name}}" required>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-submit" id="button-submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4 mb-5">
+            <h2 class="mb-5">Haven't Eaten:</h2>
+            {{#each burgers}}
+            {{#unless this.isdevoured}}
+            <div class="row mb-2 burgers">
+                <div class="col-11 col-lg-10">
+                    <form action="/{{this.id}}" method="POST">
+                        <input type="hidden" name="name" value="{{this.name}}">
+                        <button type="submit" class="btn btn-warning burgers_not_devoured">{{this.name}}</button>
+                    </form>
+                </div>
+                <div class="col-1 col-lg-1">
+                    <form action="/{{this.id}}" method="POST">
+                        <button type="submit" class="btn btn-link"><i class="fa fa-times"
+                                aria-hidden="true"></i></button>
+                    </form>
+                    <form action="/{{this.id}}" method="GET">
+                        <button type="submit" class="btn btn-link"><i class="fa fa-pencil-square-o"
+                                aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+            {{> burgers/burger-block isdevoured=true}}
+            {{/unless}}
+            {{/each}}
+        </div>
+        <div class="col-12 col-lg-4 mb-5">
+            <h2>Have Eaten:</h2>
+            {{#each burgers}}
+            {{#if this.isdevoured}}
+            <div class="row mb-2 burgers">
+                <div class="col-11 col-lg-10">
+                    <button type="button" class="btn btn-success burgers_devoured">{{this.name}}</button>
+                </div>
+                <div class="col-1 col-lg-1">
+                    <form action="/{{this.id}}" method="POST">
+                        <button type="submit" class="btn btn-link"><i class="fa fa-times"
+                                aria-hidden="true"></i></button>
+                    </form>
+                    <form action="/{{this.id}}" method="GET">
+                        <button type="submit" class="btn btn-link"><i class="fa fa-pencil-square-o"
+                                aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+            {{> burgers/burger-block isdevoured=false}}
+            {{/if}}
+            {{/each}}
+        </div>
+    </div>
+</div>
