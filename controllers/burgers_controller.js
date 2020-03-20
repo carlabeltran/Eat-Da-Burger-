@@ -1,52 +1,65 @@
 //IMPORT EXPRESS PK
 const express = require("express");
-
 //CREATE INSTANCE OF ROUTER
 const router = express.Router();
-
 //IMPORT THE MODEL (BURGER.JS)TO USE ITS DATABASE FUNCTIONS
 const burger = require("../models/burger.js");
 
 ///////////////////////////////////////////////////////////////
 //CREATE & SET UP ROUTES
 ///////////////////////////////////////////////////////////////
-//GET
+
+///////////////////////////////////////////////////////////////
+//SERVE INDEX.HANDLEBARS TO THE ROOT ROUTE
+///////////////////////////////////////////////////////////////
 router.get("/", function (req, res) {
     //ALL BURGERS
-    burger.all(function (data) {
+    burger.all(function (errAllBurgers, data) {
+        
+        if (errAllBurgers) {
+            return res.status(500).end();
+        }; 
         //HANDLEBARS
-        var hbsObject = {
+        const hbsObject = {
             burgers: data
         };
         console.log(hbsObject);
+        
         //DISPLAY
         res.render("index", hbsObject);
     });
 });
-
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 //POST
-router.post("/api/burgers", function (req, res) {
-    burger.addBurger(["name", "isdevoured"], [req.body.name, req.body.isdevoured], function (
-        result) {
+router.post("/api/burgers", function(req, res) {
+    burger.create(["name", "isdevoured"], [req.body.name, req.body.isdevoured], function(errAddBurger,result) {
+        if(errAddBurger) {
+            //IF ERROR SEND GENERIC SERVER FAILER
+            return res.status(500).end();
+        }
         //SEND BACK ID OF NEW BURGER
         res.json({ id: result.insertId });
     });
 });
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 
-//PUT
-router.put("/api/burgers/:id", function (req, res) {
-    var condition = "id = " + req.params.id;
-
+//UPDATE A QUOTE BY ID THEN REDIRECT ROOT ROUTE
+router.put("/api/burgers/:id", function(req, res) {
+    const condition = "id = " + req.params.id;
     console.log("condition", condition);
-
     //BURGER UPDATE
-    burger.updateBurger(
+    burger.update(
         {
             isdevoured: req.body.isdevoured
         },
         condition,
-        function (result) {
-            if (result.changedRows == 0) {
+        function(errUpdateBurger, result) {
+            if (errUpdateBurger) {
+                //IF ERROR SEND GENERIC SERVER FAILER
+                return res.status(500).end();
+            } else if (result.changedRows == 0) {
                 //IF NO ROWS CHANGED,THEN ID DOESN'T EXIST = 404
                 return res.status(404).end();
             } else {
@@ -55,14 +68,18 @@ router.put("/api/burgers/:id", function (req, res) {
         }
     );
 });
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 
 //DELETE
-router.delete("/api/burgers/:id", function (req, res) {
-    var condition = "id = " + req.params.id;
-
+router.delete("/api/burgers/:id", function(req, res) {
+    const condition = "id = " + req.params.id;
     //BURGER DELETE
-    burger.delete(condition, function (result) {
-        if (result.affectedRows == 0) {
+    burger.delete(condition, function(errDeleteBurger,result) {
+        if (errDeleteBurger) {
+            //IF ERROR SEND GENERIC SERVER FAILER
+            return res.status(500).end();
+        } else if (result.affectedRows == 0) {
             //IF NO ROWS CHANGED,THEN ID DOESN'T EXIST = 404
             return res.status(404).end();
         } else {

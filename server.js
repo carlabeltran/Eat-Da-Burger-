@@ -4,18 +4,17 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const app = express();
-const dotenv = require("dotenv");
-require("dotenv").config(); 
-const PORT = process.env.DB_PORT || 8080;
 
+//SET THE PORT OF APP 
+//process.env.PORT LETS HEROKU SET PORT
+const PORT = process.env.DB_PORT || 8080;
 
 //SERVE STATIC CONTENT FOR APP FROM "PUBLIC"
 app.use(express.static("public"));
 
-//PARSE APP BODY AS JSON
+//EXPRESS APP TO HANDLE DATA PARSING
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 
 //SET HANDLEBARS
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
