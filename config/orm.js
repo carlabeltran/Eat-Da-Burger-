@@ -1,10 +1,16 @@
+//////////////////////////////////////////
+//ORM.JS - FUNCTIONS THAT TAKE INPUTS & CONDITIONS
+//////////////////////////////////////////
+
+//////////////////////////////////////////
 //IMPORT MYSQL CONNECTION
-const connection = require("../config/connection.js");
+//////////////////////////////////////////
+var connection = require("../config/connection.js");
+//////////////////////////////////////////
 
 //////////////////////////////////////////
-//////////////////////////////////////////
-
 //HELPER FUNCTION FOR SQL SYNTAX
+//////////////////////////////////////////
 function printQuestionMarks(num) {
     var arr = [];
 
@@ -14,15 +20,14 @@ function printQuestionMarks(num) {
 
     return arr.toString();
 };
-
-//////////////////////////////////////////
 //////////////////////////////////////////
 
+//////////////////////////////////////////
 //HELPER FUNCTION TO CONVERT OBJECT KEY/VALUE PAIRS TO SQL SYNTAX
+//////////////////////////////////////////
 function objToSql(ob) {
     var arr = [];
-
-    //LOOP THROUGH THE KEYS & PUSH THE KEY/ VALUES AS A STRING INT ARR
+    //LOOP THROUGH KEYS & PUSH KEY/VALUES AS STRING IN ARR
     for (var key in ob) {
         var value = ob[key];
         //CHECK TO SKIP HIDDEN PROPERTIES
@@ -40,22 +45,22 @@ function objToSql(ob) {
     //TRANSLATE ARRAY OF STRINGS TO A SINGLE COMMA-SEPARTATED STRING
     return arr.toString();
 };
+//////////////////////////////////////////
 
-//////////////////////////////////////////
-//////////////////////////////////////////
 
 //OBJECT FOR ALL OUR SQL STATEMENT FUNCTIONS
-const orm = {
-    //SS
-    all: function (tableInput, cb) {
+var orm = {
+    all: function(tableInput, cb) {
         var queryString = "SELECT * FROM " + tableInput + ";";
-        connection.query(queryString, function (err, result) {
-            if (err) {
-                throw err;
+        connection.query(queryString, function(errAllConnectionORM, result) {
+            if (errAllConnectionORM) {
+                throw errAllConnectionORM;
             }
             cb(result);
         });
     },
+    //VALS=ARRAY OF VALUES-SAVE TO COLS
+    //COLS=COLUMNS TO INSERT VALUES
     create: function (table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
 
@@ -68,15 +73,15 @@ const orm = {
 
         console.log(queryString);
 
-        connection.query(queryString, vals, function (err, result) {
-            if (err) {
-                throw err;
+        connection.query(queryString, vals, function(errCreateConnectionORM, result) {
+            if (errCreateConnectionORM) {
+                throw errCreateConnectionORM;
             }
-
             cb(result);
         });
     },
-    //EX: {NAME:BURGER NAME, DEVOURED: TRUE}
+    //OBJCOLVALS=COLUMNS & VALUES TO UPDATE
+    //EX:{NAME:BURGER NAME, DEVOURED: TRUE}
     update: function (table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table;
 
@@ -86,25 +91,10 @@ const orm = {
         queryString += condition;
 
         console.log(queryString);
-        connection.query(queryString, function (err, result) {
-            if (err) {
-                throw err;
+        connection.query(queryString, function(errConnectionUpdate, result) {
+            if(errConnectionUpdate) {
+                throw errConnectionUpdate;
             }
-
-            cb(result);
-        });
-    },
-    //DELETE
-    delete: function (table, condition, cb) {
-        var queryString = "DELETE FROM " + table;
-        queryString += " WHERE ";
-        queryString += condition;
-
-        connection.query(queryString, function (err, result) {
-            if (err) {
-                throw err;
-            }
-
             cb(result);
         });
     }
