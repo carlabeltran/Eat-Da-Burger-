@@ -1,11 +1,11 @@
 <div class="container">
     <div class="row">
         <div class="col-12 col-lg-4 mb-5 text-center">
-            <img src="../img/hamburger-icon.png" alt="burger">
+            <img src="hamburger-icon.png" alt="burger">
             <h1>Eat-Da-Burger!</h1>
             <div class="row">
                 <div class="col-11">
-                    <h2>{{ title }} a burger:</h2>
+                    <h2>{{ hbsObject }} a burger:</h2>
                     <form action="{{action}}" method="POST">
                         <div class="form-group py-3 mb-4">
                             <label for="name">Burger Name:</label>
@@ -42,7 +42,6 @@
                     </form>
                 </div>
             </div>
-            {{> burgers devoured=true}}
             {{/unless}}
             {{/each}}
         </div>
@@ -64,7 +63,6 @@
                     </form>
                 </div>
             </div>
-            {{> burgers devoured=false}}
             {{/if}}
             {{/each}}
         </div>

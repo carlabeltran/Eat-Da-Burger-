@@ -29,7 +29,7 @@ router.get("/api/burgers", function(req, res) {
         console.log(hbsObject);
         
         //DISPLAY
-        res.render("index", { hbsObject });
+        res.render("index", hbsObject);
     });
 });
 ///////////////////////////////////////////////////////////////
