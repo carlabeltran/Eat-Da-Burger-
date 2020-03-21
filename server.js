@@ -2,11 +2,10 @@
 //INITIALIZE
 /////////////////////////////////////////////////////////////
 var express = require("express");
-var path = require("path");
 
 //SET THE PORT OF APP 
 //process.env.PORT LETS HEROKU SET PORT
-var PORT = process.env.DB_PORT || 8080;
+var PORT = process.env.PORT || 8080;
 
 var app = express();
 
