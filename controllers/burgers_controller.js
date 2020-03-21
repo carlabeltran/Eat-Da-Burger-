@@ -19,21 +19,25 @@ router.get("/", function (req, res) {
 router.get("/api/burgers", function(req, res) {
     //CALLBACK RESPONSE BY CALLING BURGER.SELECTALLBURGER
     burger.all(function(data) {
+        
         //HANDLEBARS
         var hbsObject = {
             burgers: data
+
         };
+        console.log("---------------------------------------")
         console.log(hbsObject);
         
         //DISPLAY
-        res.render("index", hbsObject);
+        res.render("index", { hbsObject });
     });
 });
 ///////////////////////////////////////////////////////////////
 
 //POST
-router.post("/api/burgers/create", function(req, res) {
-    burger.create(["name", "isdevoured"], [req.body.name, req.body.isdevoured], function (result) {
+router.post("/api/burgers/:id", function (req, res) {
+    //TAKES REQUEST OBJECT AS INPUT
+    burger.create(["name", "devoured"], [req.body.name, req.body.devoured], function(result) {
         console.log(result)
         //SEND BACK ID OF NEW BURGER
         res.json({ id: result.insertId });
@@ -42,12 +46,12 @@ router.post("/api/burgers/create", function(req, res) {
 ///////////////////////////////////////////////////////////////
 
 //UPDATE A QUOTE BY ID THEN REDIRECT ROOT ROUTE
-router.put("/api/burgers/update/:id", function(req, res) {
+router.put("/api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
     console.log("condition", condition);
     //BURGER UPDATE
     burger.update({
-            isdevoured: req.body.isdevoured
+            devoured: req.body.devoured
     },condition,
     function(result) {
         if (result.changedRows == 0) {

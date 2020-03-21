@@ -1,5 +1,5 @@
 //////////////////////////////////////////
-//ORM.JS - FUNCTIONS THAT TAKE INPUTS & CONDITIONS
+//ORM.JS - FUNCTIONS THAT TAKE INPUTS & CONDITIONS & TURNS THEM INTO DATABASE COMMANDS LIKE SQL
 //////////////////////////////////////////
 
 //////////////////////////////////////////
@@ -47,14 +47,14 @@ function objToSql(ob) {
 };
 //////////////////////////////////////////
 
-
 //OBJECT FOR ALL OUR SQL STATEMENT FUNCTIONS
 var orm = {
+    //SELECT ALL
     all: function(tableInput, cb) {
         var queryString = "SELECT * FROM " + tableInput + ";";
-        connection.query(queryString, function(errAllConnectionORM, result) {
-            if (errAllConnectionORM) {
-                throw errAllConnectionORM;
+        connection.query(queryString, function(errAllConnectionOrm, result) {
+            if (errAllConnectionOrm) {
+                throw errAllConnectionOrm;
             }
             cb(result);
         });
@@ -63,7 +63,6 @@ var orm = {
     //COLS=COLUMNS TO INSERT VALUES
     create: function (table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
-
         queryString += " (";
         queryString += cols.toString();
         queryString += ") ";
@@ -73,9 +72,9 @@ var orm = {
 
         console.log(queryString);
 
-        connection.query(queryString, vals, function(errCreateConnectionORM, result) {
-            if (errCreateConnectionORM) {
-                throw errCreateConnectionORM;
+        connection.query(queryString, vals, function(errCreateConnectionOrm, result) {
+            if (errCreateConnectionOrm) {
+                throw errCreateConnectionOrm;
             }
             cb(result);
         });
@@ -84,16 +83,15 @@ var orm = {
     //EX:{NAME:BURGER NAME, DEVOURED: TRUE}
     update: function (table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table;
-
         queryString += " SET ";
         queryString += objToSql(objColVals);
         queryString += " WHERE ";
         queryString += condition;
 
         console.log(queryString);
-        connection.query(queryString, function(errConnectionUpdate, result) {
-            if(errConnectionUpdate) {
-                throw errConnectionUpdate;
+        connection.query(queryString, function(errUpdateConnectionOrm, result) {
+            if (errUpdateConnectionOrm) {
+                throw errUpdateConnectionOrm;
             }
             cb(result);
         });

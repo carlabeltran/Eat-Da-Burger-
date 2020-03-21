@@ -10,7 +10,7 @@ var PORT = process.env.PORT || 8080;
 var app = express();
 
 //SERVE STATIC CONTENT FOR APP FROM "PUBLIC"
-app.use(express.static(__dirname + "/public"));
+app.use(express.static("/public"));
 
 //EXPRESS APP TO HANDLE DATA PARSING
 app.use(express.urlencoded({ extended: true }));
@@ -26,9 +26,9 @@ app.set("view engine", "handlebars");
 var routes = require("./controllers/burgers_controller.js");
 
 app.use(routes);
-app.use("/", routes);
-app.use("/update", routes);
-app.use("/create", routes);
+// app.use("/", routes);
+// app.use("/update", routes);
+// app.use("/create", routes);
 /////////////////////////////////////////////////////////////
 //LISTEN FOR CLIENT REQUESTS
 /////////////////////////////////////////////////////////////
