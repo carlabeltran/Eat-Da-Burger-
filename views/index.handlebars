@@ -1,18 +1,14 @@
-<div class="container">
-    <div class="row">
-        <div class="col-12 col-lg-4 mb-5 text-center">
-            <img src="hamburger-icon.png" alt="burger">
-            <h1>Eat-Da-Burger!</h1>
-            <div class="row">
-                <div class="col-11">
-                    <h2>{{ hbsObject }} a burger:</h2>
-                    <form action="{{action}}" method="POST">
-                        <div class="form-group py-3 mb-4">
-                            <label for="name">Burger Name:</label>
-                            <input type="hidden" name="id" value="{{id}}">
-                            <input type="text" class="form-control form-control-lg" id="name" name="name"
-                                value="{{name}}" required>
-                        </div>
+<div class="container-fluid" style="align:center;">
+    <main class="content">
+        <div class="appIcon">
+            <img src="/img/burger-vector-png-3.png" alt="burger">
+        </div>
+        <div class="title">Eat Da Burger!</div>
+        <form action={{action}} method="POST">
+            {{!-- THIS IS THE BURGER LABEL --}}
+            <label for="name">Burger Name:</label>
+            <input type="hidden" name="id" value={{id}}>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter burger name here...." value={{name}} required>
                         <div class="text-center">
                             <button type="submit" class="btn btn-submit" id="button-submit">Submit</button>
                         </div>
@@ -55,7 +51,8 @@
                 </div>
                 <div class="col-1 col-lg-1">
                     <form action="/{{this.id}}" method="POST">
-                        <button type="submit" class="btn btn-link"><i class="fa fa-times"aria-hidden="true"></i></button>
+                        <button type="submit" class="btn btn-link"><i class="fa fa-times"
+                                aria-hidden="true"></i></button>
                     </form>
                     <form action="/{{this.id}}" method="GET">
                         <button type="submit" class="btn btn-link"><i class="fa fa-pencil-square-o"
@@ -67,4 +64,5 @@
             {{/each}}
         </div>
     </div>
+</main>
 </div>

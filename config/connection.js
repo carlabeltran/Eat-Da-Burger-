@@ -1,7 +1,7 @@
 //SET UP MYSQL CONNECTION
 var mysql = require("mysql");
 
-require("dotenv").config(); 
+require("dotenv").config();
 
 //CREATE CONNECTION
 var connection = mysql.createConnection({
@@ -14,11 +14,11 @@ var connection = mysql.createConnection({
 
 //MAKE CONNECTION
 connection.connect(function(err) {
-    if (err) {
-      console.error("error connecting: " + err.stack);
-      return;
-    }
-    console.log("connected as id " + connection.threadId);
+  if (err) {
+    console.error("error connecting: " + err.stack);
+    return;
+  }
+  console.log("connected as id " + connection.threadId);
 });
 
 //EXPORT CONNECTION FOR OUR ORM TO USE
