@@ -22,10 +22,11 @@
 
         {{!-- CSS LINK --}}
         <style>
-            /* GOOGLE FONTS */
             @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
             @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
-            
+            * {
+                box-sizing: border-box;
+            }
             html,
             body, .container-fluid {
                 width: 100%;
@@ -36,18 +37,39 @@
                 font-family: 'Poppins', sans-serif;
                 padding: 0px;
             }
-
+            header {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                background-color:black;
+                height: 60px!important;
+                overflow: hidden;
+                z-index: 10;
+                border-bottom: 2px solid goldenrod;
+            }
+            .topright {
+                position: relative;
+            }
+            .logo {
+                position: absolute;
+                top: 8px;
+                left: 50px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                font-size: 20px;
+                color: goldenrod;
+                font-family: 'Anton', sans-serif;
+                letter-spacing: 0.04em;
+            }
             .appIcon {
                 margin-top: 50px;
                 text-align: center;
                 display: block;
             }
-
-            img {
+            #appIcon {
                 width: 300px;
                 height: 300px;
             }
-
             .title {
                 margin-top: 5px;
                 margin-bottom: 20px;
@@ -59,36 +81,33 @@
                 align-content: center;
                 text-align: center;
             }
-
             .submit-form {
                 align-content: center;
                 text-align: center;
             }
-
             label {
-                margin-bottom: 20px;
+                margin-bottom: 10px;
+                font-size: 25px;
                 color: goldenrod;
-                font-family:'Poppins', sans-serif;
-                align-content: center;
-                text-align: left;
+                font-family: 'Anton', sans-serif;
+                letter-spacing: 0.05em;
             }
-
             .text-area {
                 text-align: center;
                 align-content: center;
                 width: 300px;
-                height: 200px;
+                height: 180px;
                 color: black;
+                font-size: 20px;
             }
-
             .submitBtn {
                 margin-top: 20px;
                 margin-bottom: 20px;
-                border: 3px solid #fff;
+                border: 3px solid goldenrod;
                 background-color: black;
-                color: white;
+                color: goldenrod;
                 text-align: center;
-                font-size: 15px;
+                font-size: 20px;
                 cursor: pointer;
                 align-content: center;
                 line-height: 20px;
@@ -98,8 +117,64 @@
                 font-weight: bolder;
                 letter-spacing: 0.03em;
             }
-            
-
+            .column {
+                float: left;
+                width: 50%;
+            }
+            .row:after {
+            content: "";
+            display: table;
+            clear: both;
+            }
+            .havent-eaten-container{
+                margin-top: 20px;
+                margin-bottom: 20px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+            .burgers-title {
+                color: white;
+                font-family: 'Anton', sans-serif;
+                letter-spacing: 0.05em;
+                font-size: 30px;
+            }
+            .burger-cards {
+                margin-top: 50px;
+                margin-bottom: 20px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                width:300px;
+                height:300px;
+            }
+            #burgersIcon{
+                width:50px;
+                height:50px;
+            }
+            .eaten-burgers-container {
+                margin-top: 20px;
+                margin-bottom: 20px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+            .eaten-burgers-title {
+                color: white;
+                font-family: 'Anton', sans-serif;
+                letter-spacing: 0.05em;
+                font-size: 30px;
+            }
+            .eaten-burger-cards {
+                margin-top: 50px;
+                margin-bottom: 20px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                width:300px;
+                height:300px;
+            }
+            @media screen and (max-width: 600px) {
+            .column {
+            width: 100%;
+            }
+}
         </style>
     </head>
     </head>

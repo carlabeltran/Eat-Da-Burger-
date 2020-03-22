@@ -29,7 +29,7 @@ router.get("/", function(req, res) {
 });
 ///////////////////////////////////////////////////////////////
 //POST
-router.post("/api/burgers", function (req, res) {
+router.post("/id", function (req, res) {
     var name = req.body.name;
     var devoured = req.body.devoured;
     //TAKES REQUEST OBJECT AS INPUT
@@ -48,7 +48,7 @@ router.post("/api/burgers", function (req, res) {
     });
 });
 ///////////////////////////////////////////////////////////////
-//UPDATE A QUOTE BY ID THEN REDIRECT ROOT ROUTE
+//UPDATE BY ID
 router.put("/api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
     console.log("condition", condition);

@@ -1,68 +1,76 @@
 <div class="container-fluid" style="align:center;">
     <main class="content">
+        <header>
+            <div class="logo topright">
+                <div class="square">
+                    Food
+                </div>
+            </div>
+        </header>
         <div class="appIcon">
-            <img src="/img/burger-vector-png-3.png" alt="burger">
+            <img src="/img/burger-vector-png-3.png" alt="burger" id="appIcon">
         </div>
         <div class="title">Eat Da Burger!</div>
         <form action={{action}} method="POST" class="submit-form">
             {{!-- THIS IS THE BURGER LABEL --}}
-            <label for="name">Burger Name:</label>
-            
-            <br/>
-
+            <label for="name">Burger Name</label>
+            <br />
             <input type="hidden" name="id" value={{id}}>
-            <input type="text" min="2" max="100" class="text-area" id="name" name="name" placeholder="Enter burger name here...." value={{name}}>
+            <input type="text" min="2" max="100" class="text-area" id="name" name="name"
+                placeholder="Enter burger name here...." value={{name}}>
             <div class="submit-button">
                 <button type="button" class="submitBtn" id="button-submit">Submit</button>
             </div>
         </form>
-        <div class="col-12 col-lg-4 mb-5">
-            <h2 class="mb-5">Haven't Eaten:</h2>
-            {{#each burgers}}
-            {{#unless this.devoured}}
-            <div class="row mb-2 burgers">
-                <div class="col-11 col-lg-10">
-                    <form action="/{{this.id}}" method="POST">
-                        <input type="hidden" name="name" value="{{this.name}}">
-                        <button type="submit" class="btn btn-warning burgers_not_devoured">{{this.name}}</button>
-                    </form>
-                </div>
-                <div class="col-1 col-lg-1">
-                    <form action="/{{this.id}}" method="POST">
-                        <button type="submit" class="btn btn-link"><i class="fa fa-times"
-                                aria-hidden="true"></i></button>
-                    </form>
-                    <form action="/{{this.id}}" method="GET">
-                        <button type="submit" class="btn btn-link"><i class="fa fa-pencil-square-o"
-                                aria-hidden="true"></i></button>
-                    </form>
-                </div>
-            </div>
-            {{/unless}}
-            {{/each}}
-        </div>
-        <div class="col-12 col-lg-4 mb-5">
-            <h2>Eaten:</h2>
-            {{#each burgers}}
-            {{#if this.devoured}}
-            <div class="row mb-2 burgers">
-                <div class="col-11 col-lg-10">
-                    <button type="button" class="btn btn-success burgers_devoured">{{this.name}}</button>
-                </div>
-                <div class="col-1 col-lg-1">
-                    <form action="/{{this.id}}" method="POST">
-                        <button type="submit" class="btn btn-link"><i class="fa fa-times"
-                                aria-hidden="true"></i></button>
-                    </form>
-                    <form action="/{{this.id}}" method="GET">
-                        <button type="submit" class="btn btn-link"><i class="fa fa-pencil-square-o"
-                                aria-hidden="true"></i></button>
-                    </form>
+        <div class="row">
+            <div class="column">
+                <div class="havent-eaten-container">
+                    <div class="burgers-title">Haven't Eaten</div>
+                    <div class="burger-cards">
+                        {{#each burgers}}
+                        {{#unless this.devoured}}
+                        <form action="/{{this.id}}" method="POST" class="havent-burgers">
+                            <input type="hidden" name="name" value={{this.name}}>
+                            <button type="submit" class="btn btn-warning burgers_not_devoured">
+                                <div class="burgers-icon">
+                                    <img src="/img/burger-vector-png-3.png" alt="burger" id="burgersIcon">
+                                </div>
+                                {{this.name}}
+                            </button>
+                        </form>
+                        <form action="/{{this.id}}" method="POST">
+                            <button type="submit" class="btn btn-link"><i class="fa fa-times"
+                                    aria-hidden="true"></i></button>
+                        </form>
+                        <form action="/{{this.id}}" method="GET">
+                            <button type="submit" class="btn btn-link"><i class="fa fa-pencil-square-o"
+                                    aria-hidden="true"></i></button>
+                        </form>
+                        {{/unless}}
+                        {{/each}}
+                    </div>
                 </div>
             </div>
-            {{/if}}
-            {{/each}}
+            <div class="column">
+                <div class="eaten-burgers-container">
+                    <div class="eaten-burgers-title">Eaten</div>
+                    <div class="eaten-burger-cards">
+                        {{#each burgers}}
+                        {{#if this.devoured}}
+                            <button type="button" class="btn btn-success burgers_devoured">{{this.name}}</button>
+                            <form action="/{{this.id}}" method="POST">
+                                <button type="submit" class="btn btn-link"><i class="fa fa-times"
+                                    aria-hidden="true"></i></button>
+                            </form>
+                            <form action="/{{this.id}}" method="GET">
+                                <button type="submit" class="btn btn-link"><i class="fa fa-pencil-square-o"
+                                    aria-hidden="true"></i></button>
+                            </form>
+                        {{/if}}
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</main>
+    </main>
 </div>
