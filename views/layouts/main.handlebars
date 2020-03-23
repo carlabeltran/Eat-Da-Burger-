@@ -18,8 +18,9 @@
         {{!-- LINK FOR BOOTSTRAP CDN --}}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        {{!-- FONT AWESOME  --}}
-
+        {{!-- ANIMATE CSS CDN  --}}
+        <link rel="stylesheet" href="animate.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
         {{!-- CSS LINK --}}
         <style>
             @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
@@ -92,7 +93,7 @@
                 font-family: 'Anton', sans-serif;
                 letter-spacing: 0.05em;
             }
-            .text-area {
+            .form-control {
                 text-align: center;
                 align-content: center;
                 width: 300px;
@@ -157,7 +158,7 @@
                 width:50px;
                 height:50px;
             }
-            .eat-burger {
+            .change-devoured {
                 margin-top: 20px;
                 margin-bottom: 20px;
                 margin-left: 10px;
@@ -230,9 +231,73 @@
         <script src="http://code.jquery.com/jquery.js"></script>
     </head>
     </head>
-
     <body>
         {{{ body }}}
     </body>
+    <script >
+        $(function () {
+                $(".change-devoured").on("click", function(event) {
+                    var id = $(this).data("id");
+                    var newDevoured = $(this).data("newDevoured");
 
+                    var newDevouredState = {
+                        devoured: newDevoured
+                    };
+
+                    // Send the PUT request.
+                    $.ajax("/api/burgers/" + id, {
+                        type: "PUT",
+                        data: newDevouredState
+                    }).then(
+                        function () {
+                            console.log("changed devoured to", newDevoured);
+                            // Reload the page to get the updated list
+                            location.reload();
+                        }
+                    );
+                });
+
+                $(".create-form").on("submit", function(event) {
+                    // Make sure to preventDefault on a submit event.
+                    event.preventDefault();
+
+                    var newBurger= {
+                        name: $("#change-devoured").val().trim(),
+                        devoured: $("[name=devoured]:checked").val().trim()
+                    };
+
+                    // Send the POST request.
+                    $.ajax("/api/burgers", {
+                        type: "POST",
+                        data: newBurger
+                    }).then(
+                        function () {
+                            console.log("created new burger");
+                            // Reload the page to get the updated list
+                            location.reload();
+                        }
+                    );
+                });
+
+                $(".delete-burger").on("click", function(event) {
+                    var id = $(this).data("id");
+
+                    // Send the DELETE request.
+                    $.ajax("/api/burgers/" + id, {
+                        type: "DELETE"
+                    }).then(
+                        function () {
+                            console.log("deleted burger", id);
+                            // Reload the page to get the updated list
+                            location.reload();
+                        }
+                    );
+                });
+            });
+
+
+
+
+
+    </script>
 </html>

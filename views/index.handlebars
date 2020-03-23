@@ -13,7 +13,7 @@
         {{!-- ./NAVBAR --}}
         {{!-- ICON --}}
         <div class="appIcon">
-            <img src="/img/burger-vector-png-3.png" alt="burger" id="appIcon">
+            <img  class="animated infinite tada delay-2s" src="/img/burger-vector-png-3.png" alt="burger" id="appIcon">
         </div>
         {{!-- ./ICON --}}
         {{!-- CONTENT TITLE --}}
@@ -25,51 +25,48 @@
                 {{!-- HAVENT EATEN CONTAINER --}}
                 <div class="havent-eaten-container">
                     {{!-- COL 1 TITLE --}}
-                    <div class="burgers-title">Haven't Eaten</div>
+                    <div class="burgers-title">Available Burgers</div>
                     {{!-- PASS IN DATA FROM SERVER.JS --}}
                     {{#each burgers}}
                     {{#unless this.devoured}}
                     {{!-- IF NOT DEVOURED --}}
                     {{!-- ALL BURGERS THAT HAVE NOT BEEN EATEN PLACE THEM HERE --}}
                     <div class="havent-burgers">
-                        <form action="/{{this.id}}" method="POST">
-                            <input type="hidden" name="name" data-id="{{this.name}}" value="1">
+                        <form action="/burgers/{{this.id}}?_method=PUT" method="POST" class="update-button">
                             <div type="button" class="btn btn-warning burgers_not_devoured">
+                                <input type="hidden" type="text" name="name" data-id="{{this.id}}" value={{this.id}}>
                                 {{!-- BURGER IMAGE --}}
-                                <div class="burgers-icon" id="{{this.id}}">
+                                <div class="burgers-icon">
                                     <img src="/img/burger-vector-png-3.png" alt="burger" id="burgersIcon">
                                 </div>
+                                {{!-- BURGER NAME --}}
                                 <p><span class="label"></span>{{this.name}}</p>
                             </div>
                             <br />
-                            <button data-id="{{this.id}}" class="eat-burger">Devour It!</button>
+                            {{!-- DEVOUR BURGER BUTTON --}}
+                            <button type="submit" data-id="{{this.id}}" class="change-devoured">Devour It!</button>
                         </form>
                     </div>
                     {{/unless}}
                     {{/each}}
                 </div>
             </div>
-
             {{!-- COLUMN 2 --}}
             <div class="column">
                 {{!-- EATEN BURGERS CONTAINER--}}
                 <div class="eaten-burgers-container">
-                    {{!-- EATEN TITLE --}}
-                    <div class="eaten-burgers-title">Eaten</div>
+                    {{!-- EATEN BURGERS TITLE --}}
+                    <div class="eaten-burgers-title">Eaten Burgers</div>
                     {{#each burgers}}
                     {{#if this.devoured}}
-                    {{!-- IF DEVOURED --}}
-                    {{!-- ALL BURGERS THAT HAVE BEEN EATEN PLACE THEM HERE --}}
+                    {{!-- ALL BURGERS THAT HAVE BEEN EATEN PLACE HERE --}}
                     <div class="eaten-burgers">
-                        <form action="/{{this.id}}" method="POST">
-                            <input type="hidden" name="name" data-id="{{this.name}}"value="0">
-                            <div type="button" class="btn btn-success burgers_devoured">
-
-                                <p class="eaten-text"><span class="label"></span>{{this.name}}</p>
-                            </div>
-                            <br/>
-                            <button data-id="{{this.id}}" class="devoured-burger hidden">Devour It!</button>
-                        </form>
+                        <div type="button" class="btn btn-success burgers_devoured">
+                            <input class="form-control" type="hidden" name="name" data-id="{{this.name}}" readonly><p aria-readonly="true"><span class="burgers_devoured" readonly></span>{{this.name}}</p>
+                        </div>
+                        <br />
+                        {{!-- THIS BUTTON IS HIDDEN & AS A QUICK SOLUTION FOR STYLING PURPOSE --}}
+                        <button data-id="{{this.id}}" class="devoured-burger hidden">Devour It!</button>
                     </div>
                     {{/if}}
                     {{/each}}
@@ -79,18 +76,17 @@
         {{!-- ./ROW --}}
         </div>
         {{!-- FORM TO ADD A BURGER  --}}
-        <form class="create-form">
-            <div class="form-group">
-                {{!-- BURGER INPUT TITLE --}}
-                <label for="name">Burger Name</label>
-                <input type="hidden" data-id="{{id}}" name="id">
-                <br />
-                {{!-- INPUT FEILD --}}
-                <input type="text" min="2" max="100" class="text-area" id="{{name}}" name="name"placeholder="Enter burger name here...." required>
-                <br/>
-                {{!-- SUBMIT BUTTON --}}
-                <button type="submit" class="submitBtn" id="button-submit">Submit</button>
-            </div>
+        <form id="add-burger" action="/burgers" class="create-form" method="POST">
+            {{!-- BURGER INPUT TITLE --}}
+            <label for="burger">Burger Name</label>
+            <br />
+            {{!-- INPUT FEILD --}}
+            <input type="text" class="form-control" id="burger" name="name" placeholder="Enter burger name here...." required>
+            <br />
+            {{!-- SUBMIT BUTTON --}}
+            <button type="submit" class="btn submitBtn" id="button-submit">
+            Submit
+            </button>
         </form>
     </main>
 </div>

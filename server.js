@@ -1,9 +1,13 @@
 /////////////////////////////////////////////////////////////
 //INITIALIZE
 /////////////////////////////////////////////////////////////
+//CREATE EXPRESS CONNECTION & RUN NODE SERVER
 var express = require("express");
+//SET HANDLEBARS
+var exphbs = require("express-handlebars");
+var methodOverride = require("method-override");
 
-//SET THE PORT OF APP 
+//SET THE PORT OF APP
 //process.env.PORT LETS HEROKU SET PORT
 var PORT = process.env.PORT || 8080;
 
@@ -13,26 +17,24 @@ var app = express();
 app.use(express.static("public"));
 
 //EXPRESS APP TO HANDLE DATA PARSING
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-//SET HANDLEBARS
-var exphbs = require("express-handlebars");
-
+//MAIN PAGE IS ALWAYS DISPLAYED
+app.use(methodOverride("_method"));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 //SET UP & IMPORT ROUTES & GIVE SERVER ACCESS
-var routes = require("./controllers/burgers_controller");
+var routes = require("./controllers/burgers_controller.js");
 
+//EXPRESS DEFINED ROUTES
 app.use("/", routes);
-app.use("/update", routes);
-app.use("/create", routes)
 
 /////////////////////////////////////////////////////////////
 //LISTEN FOR CLIENT REQUESTS
 /////////////////////////////////////////////////////////////
-app.listen(PORT, function () {
+app.listen(PORT, function() {
     //LOG(SERVER-SIDE)WHEN SERVER IS STARTED
     console.log("Server listening on: http://localhost:" + PORT);
 });
