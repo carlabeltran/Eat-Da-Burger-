@@ -1,68 +1,96 @@
-<div class="container-fluid" style="align:center;">
+<div class="container-fluid">
     <main class="content">
+        {{!-- NAVBAR --}}
         <header>
+            {{!-- LOGO --}}
             <div class="logo topright">
                 <div class="square">
                     Food
                 </div>
             </div>
+            {{!-- ./LOGO --}}
         </header>
+        {{!-- ./NAVBAR --}}
+        {{!-- ICON --}}
         <div class="appIcon">
             <img src="/img/burger-vector-png-3.png" alt="burger" id="appIcon">
         </div>
+        {{!-- ./ICON --}}
+        {{!-- CONTENT TITLE --}}
         <div class="title">Eat Da Burger!</div>
-        <form action={{action}} method="POST" class="submit-form">
-            {{!-- THIS IS THE BURGER LABEL --}}
-            <label for="name">Burger Name</label>
-            <br />
-            <input type="hidden" name="id" value={{id}}>
-            <input type="text" min="2" max="100" class="text-area" id="name" name="name"
-                placeholder="Enter burger name here...." value={{name}}>
-            <div class="submit-button">
-                <button type="button" class="submitBtn" id="button-submit">Submit</button>
-            </div>
-        </form>
+        {{!-- HAVEN'T EATEN BURGERS --}}
         <div class="row">
+            {{!-- COLUMN 1 --}}
             <div class="column">
+                {{!-- HAVENT EATEN CONTAINER --}}
                 <div class="havent-eaten-container">
+                    {{!-- COL 1 TITLE --}}
                     <div class="burgers-title">Haven't Eaten</div>
+                    {{!-- PASS IN DATA FROM SERVER.JS --}}
                     {{#each burgers}}
                     {{#unless this.devoured}}
-                    <form action="/{{this.id}}" method="POST" class="havent-burgers">
-                        <input type="hidden" name="name" value={{this.name}}>
-                        <div type="button" class="btn btn-warning burgers_not_devoured">
-                            <div class="burgers-icon">
-                                <img src="/img/burger-vector-png-3.png" alt="burger" id="burgersIcon">
+                    {{!-- IF NOT DEVOURED --}}
+                    {{!-- ALL BURGERS THAT HAVE NOT BEEN EATEN PLACE THEM HERE --}}
+                    <div class="havent-burgers">
+                        <form action="/{{this.id}}" method="POST">
+                            <input type="hidden" name="name" data-id="{{this.name}}" value="1">
+                            <div type="button" class="btn btn-warning burgers_not_devoured">
+                                {{!-- BURGER IMAGE --}}
+                                <div class="burgers-icon" id="{{this.id}}">
+                                    <img src="/img/burger-vector-png-3.png" alt="burger" id="burgersIcon">
+                                </div>
+                                <p><span class="label"></span>{{this.name}}</p>
                             </div>
-                            {{this.name}}
-                        </div>
-                    </form>
-                    <form action="/{{this.id}}" method="POST">
-                        <button type="submit" class="btn btn-link"><i class="fa fa-times"aria-hidden="true"></i></button>
-                    </form>
-                    <form action="/{{this.id}}" method="GET">
-                        <button type="submit" class="btn btn-link"><i class="fa fa-pencil-square-o"aria-hidden="true"></i></button>
-                    </form>
+                            <br />
+                            <button data-id="{{this.id}}" class="eat-burger">Devour It!</button>
+                        </form>
+                    </div>
                     {{/unless}}
                     {{/each}}
                 </div>
             </div>
+
+            {{!-- COLUMN 2 --}}
             <div class="column">
+                {{!-- EATEN BURGERS CONTAINER--}}
                 <div class="eaten-burgers-container">
+                    {{!-- EATEN TITLE --}}
                     <div class="eaten-burgers-title">Eaten</div>
                     {{#each burgers}}
                     {{#if this.devoured}}
-                    <button type="button" class="btn btn-success burgers_devoured">{{this.name}}</button>
-                    <form action="/{{this.id}}" method="POST">
-                        <button type="submit" class="btn btn-link"><i class="fa fa-times"aria-hidden="true"></i></button>
-                    </form>
-                    <form action="/{{this.id}}" method="GET">
-                        <button type="submit" class="btn btn-link"><i class="fa fa-pencil-square-o"aria-hidden="true"></i></button>
-                    </form>
+                    {{!-- IF DEVOURED --}}
+                    {{!-- ALL BURGERS THAT HAVE BEEN EATEN PLACE THEM HERE --}}
+                    <div class="eaten-burgers">
+                        <form action="/{{this.id}}" method="POST">
+                            <input type="hidden" name="name" data-id="{{this.name}}"value="0">
+                            <div type="button" class="btn btn-success burgers_devoured">
+
+                                <p class="eaten-text"><span class="label"></span>{{this.name}}</p>
+                            </div>
+                            <br/>
+                            <button data-id="{{this.id}}" class="devoured-burger hidden">Devour It!</button>
+                        </form>
+                    </div>
                     {{/if}}
                     {{/each}}
                 </div>
+            {{!-- ./COLUMN 2 --}}
             </div>
+        {{!-- ./ROW --}}
         </div>
+        {{!-- FORM TO ADD A BURGER  --}}
+        <form class="create-form">
+            <div class="form-group">
+                {{!-- BURGER INPUT TITLE --}}
+                <label for="name">Burger Name</label>
+                <input type="hidden" data-id="{{id}}" name="id">
+                <br />
+                {{!-- INPUT FEILD --}}
+                <input type="text" min="2" max="100" class="text-area" id="{{name}}" name="name"placeholder="Enter burger name here...." required>
+                <br/>
+                {{!-- SUBMIT BUTTON --}}
+                <button type="submit" class="submitBtn" id="button-submit">Submit</button>
+            </div>
+        </form>
     </main>
 </div>
