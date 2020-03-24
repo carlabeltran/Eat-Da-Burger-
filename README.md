@@ -1,80 +1,69 @@
-![Eat Da Burger!][logo]
+# ![icon](public/img/output-onlinepngtools.png)  Eat-Da-Burger! 
 
-[logo]: https://github.com/carlabeltran/Eat-Da-Burger-/blob/master/public/img/output-onlinepngtools.png
-# ![icon](public/img/output-onlinepngtools.png) 
+### Welcome to Eat Da Burger App! 👋
 
-# 🍔 Eat Da Burger! #
+##### This restaurant app lets users order burgers by inputing the name of the burger they'd like to eat.
 
-## Welcome to Eat Da Burger App! 👋
-
-> This restaurant app that lets users input the names of burgers they'd like to eat.
-
-
-# ✨ Demo
+## ✨ Demo
 
 ![Eat Da Burger Demo][demo]
 
-[demo]: https://github.com/carlabeltran/Eat-Da-Burger-/blob/master/public/img/Eat%20Da%20Burger!.gif?raw=true "Eat Da Burger!"
+[demo]: https://github.com/carlabeltran/Eat-Da-Burger-/blob/master/public/img/Eat%20Da%20Burger!%20(1).gif?raw=true "Eat Da Burger!"
 
-[Eat Da Burger App Link](https://eattburgerapp.herokuapp.com/)
+*****
 
-------
+## 🚀 Deployment
 
-# 📖 Table of Contents
+This application is delployed at [Eat Da Burger App](https://eattburgerapp.herokuapp.com/)
 
- 👋[Description](#Desctription)
- ✨  [Demo](#Demo)
-📕 [User Story](#UserStory)
-💼 [Business Context](#BusinessContext)
-[Technolgy](#Technolgy)
-💃 🕺[ Getting Started](#getting-started)
- ⬇️️ [Installation](#installation)
-   ⚙️ [Configuration](#configuration)
-   🚀 [Usage](#usage)
- [Features](#features)
-   * [Feature 1](#Feature1)
-  * [Feature 2](#Feature2)
- * [Future work](#future-work)
- 🤝 [Contributing](#Contributors)
-* [Tests](#Tests)
-❓ [FAQS](#Faqs)
-📝 [License](#License)
-👤 [Author](#Author)
-----
+*****
 
-## 📕 User Story
+## ⬇️️ Installation
 
-``````
-for a new project Refer to the Good README guide. // SO THAT I can easily put together a good README // AS A developer I WANT a README generator
-`````
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-## 💼 Business Context
+### Local Environment Setup
 
-````
-When preparing a report for stakeholders, it is important to have up-to-date information about members of the development team. Rather than navigating to each team member's GitHub profile, a command-line application will allow for quick and easy generation of profiles in PDF format.
+To use Eat-Da-Burger web application application from your local environment, you must accomplish the following steps below:
+
+**Step 1 - Clone my repo using the command line below.**
 ```
-----
+git clone https://github.com/carlabeltran/Eat-Da-Burger-.git
+```
+**Step 2 - Change directory to the cloned repo folder.**
+```
+cd Eat-Da-Burger-
+```
+**Step 3 - Install all required NPM packages.**
+```
+npm install
+```
+**Step 4 - Start the application server using the command line below**
+```
+node server.js
+```
+
+## ⚙️ Configuration
+``````
+heroku & github details
+``````
+## 💯 Usage
+
+*****
 
 ## 💡 Technology
-
-
----
-
-### ⬇️️ ${installation}
-
-
-``````
-
-``````
-### ⚙️ Configuration
-
-
-``````
-### 🚀 Usage
+This app requires a number of programs:
+* [Node.js](https://nodejs.org/en/)
+* [MySQL Workbench](https://www.mysql.com/products/workbench/)
+* NPM Packages: 
+	* [Express](https://www.npmjs.com/package/express)
+	* [Express-Handlers](https://www.npmjs.com/package/express-handlebars)
+	* [Body-Override](https://www.npmjs.com/package/method-override)
+	* [MySQL](https://www.npmjs.com/package/mysql)
+	* [dotenv](https://www.npmjs.com/package/dotenv)
 
 
 -----
-
 ## 🌈 Features
 
 
@@ -83,18 +72,11 @@ When preparing a report for stakeholders, it is important to have up-to-date inf
 
 
 ----
-## 🧪 Tests
+## 🚨 Tests
 
 ----
 
 ## ❓FAQS
-
-#### Can I see how my README file is going to look before I commit it?
-
-#### How can I get involved?
-
-Create a pull-request or send me a message at [@carlabeltran](https://github.com/carlabeltran).
-
 
 #### How can I support you?
 
@@ -112,9 +94,7 @@ ___
 
 **Carla Beltran**
 
-- Website: [@carlabeltran](https://github.com/carlabeltran)
 - Email: [@carlabeltran](https://github.com/carlabeltran14@icloud.com)
-- Github: [@carlabeltran](https://github.com/carlabeltran)
 - Linkdin: [@carlabeltran](https://github.com/carlabeltran)
 
 ---
