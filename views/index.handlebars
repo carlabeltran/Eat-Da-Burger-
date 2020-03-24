@@ -13,7 +13,7 @@
         {{!-- ./NAVBAR --}}
         {{!-- ICON --}}
         <div class="appIcon">
-            <img  class="animated infinite tada delay-2s" src="/img/burger-vector-png-3.png" alt="burger" id="appIcon">
+            <img class="animated infinite tada delay-2s" src="/img/burger-vector-png-3.png" alt="burger" id="appIcon">
         </div>
         {{!-- ./ICON --}}
         {{!-- CONTENT TITLE --}}
@@ -63,7 +63,8 @@
                     <div class="eaten-burgers">
                         <form action="/burgers/{{this.id}}?_method=DELETE" method="POST" class="delete-button">
                             <div type="button" class="btn btn-success burgers_devoured">
-                                <input class="devoured-burgers" type="hidden" name="name" data-id="{{this.id}}"><p><span class="eaten-text"></span>{{this.name}}</p>
+                                <input class="devoured-burgers" type="hidden" name="name" data-id="{{this.id}}">
+                                <p><br/><span class="eaten-text">{{this.name}}</span></p>
                             </div>
                             <br />
                             <button name="name" data-id="{{this.id}}" class="delete-burger">Delete</button>
@@ -72,24 +73,140 @@
                     {{/if}}
                     {{/each}}
                 </div>
-            {{!-- ./COLUMN 2 --}}
+                {{!-- ./COLUMN 2 --}}
             </div>
-        {{!-- ./ROW --}}
+            {{!-- ./ROW --}}
         </div>
-        {{!-- FORM TO ADD A BURGER  --}}
-        <form id="add-burger" action="/burgers" class="create-form" method="POST">
-            <div class="form-group">
-                {{!-- BURGER INPUT TITLE --}}
-                <label for="name">Burger Name</label>
-                <br />
-                {{!-- INPUT FEILD --}}
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter burger name here....">
+        {{!-- BURGER MENU --}}
+        <div class="row-menu">
+            {{!-- COLUMN 1 --}}
+            <div class="column-menu">
+                {{!-- BURGER MENU CONTAINER --}}
+                <div class="burger-menu-container">
+                    <div class="burger-menu-title">BURGER MENU</div>
+                    {{!-- BURGER ROW 1 --}}
+                    <div class="row-burger">
+                        {{!-- BURGER COLUMN 1 --}}
+                        <div class="column-burger">
+                            <div class="burger-menu-item">
+                                {{!-- BURGER IMAGE --}}
+                                <div class="burger-menu-item">
+                                    <img src="/img/burger-vector-png-3.png" alt="burger" id="burgersIcon">
+                                </div>
+                                {{!-- BURGER NAME --}}
+                                <p>Olive-R-Twist</p>
+                            </div>
+                        </div>
+                        <div class="column-burger">
+                            <div class="burger-menu-item">
+                                {{!-- BURGER IMAGE --}}
+                                <div class="burgers-icon">
+                                    <img src="/img/burger-vector-png-3.png" alt="burger" id="burgersIcon">
+                                </div>
+                                {{!-- BURGER NAME --}}
+                                <p>Sir Lanshallot</p>
+                            </div>
+                        </div>
+                        <div class="column-burger">
+                            <div class="burger-menu-item">
+                                {{!-- BURGER IMAGE --}}
+                                <div class="burgers-icon">
+                                    <img src="/img/burger-vector-png-3.png" alt="burger" id="burgersIcon">
+                                </div>
+                                {{!-- BURGER NAME --}}
+                                <p>Sweet Dreams Are Made Of Cheese</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{!-- BURGER ROW 2 --}}
+                    <div class="row-burger">
+                        {{!-- BURGER COLUMN 2 --}}
+                        <div class="column-burger">
+                            <div class="burger-menu-item">
+                                {{!-- BURGER IMAGE --}}
+                                <div class="burgers-icon">
+                                    <img src="/img/burger-vector-png-3.png" alt="burger" id="burgersIcon">
+                                </div>
+                                {{!-- BURGER NAME --}}
+                                <p>If Looks Could Kale</p>
+                            </div>
+                        </div>
+                        <div class="column-burger">
+                            <div class="burger-menu-item">
+                                {{!-- BURGER IMAGE --}}
+                                <div class="burgers-icon">
+                                    <img src="/img/burger-vector-png-3.png" alt="burger" id="burgersIcon">
+                                </div>
+                                {{!-- BURGER NAME --}}
+                                <p>Bohemian Radishy</p>
+                            </div>
+                        </div>
+                        <div class="column-burger">
+                            <div class="burger-menu-item">
+                                {{!-- BURGER IMAGE --}}
+                                <div class="burgers-icon">
+                                    <img src="/img/burger-vector-png-3.png" alt="burger" id="burgersIcon">
+                                </div>
+                                {{!-- BURGER NAME --}}
+                                <p>Baby You Can Chive My Car</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{!-- BURGER ROW 3 --}}
+                    <div class="row-burger">
+                        {{!-- BURGER COLUMN 3 --}}
+                        <div class="column-burger">
+                            <div class="burger-menu-item">
+                                {{!-- BURGER IMAGE --}}
+                                <div class="burgers-icon">
+                                    <img src="/img/burger-vector-png-3.png" alt="burger" id="burgersIcon">
+                                </div>
+                                {{!-- BURGER NAME --}}
+                                <p>Poutine On The Ritz</p>
+                            </div>
+                        </div>
+                        <div class="column-burger">
+                            <div class="burger-menu-item">
+                                {{!-- BURGER IMAGE --}}
+                                <div class="burgers-icon">
+                                    <img src="/img/burger-vector-png-3.png" alt="burger" id="burgersIcon">
+                                </div>
+                                {{!-- BURGER NAME --}}
+                                <p>Little Swiss Bunshine Burger</p>
+                            </div>
+                        </div>
+                        <div class="column-burger">
+                            <div class="burger-menu-item">
+                                {{!-- BURGER IMAGE --}}
+                                <div class="burgers-icon">
+                                    <img src="/img/burger-vector-png-3.png" alt="burger" id="burgersIcon">
+                                </div>
+                                {{!-- BURGER NAME --}}
+                                <p>The Corn Supremacy</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bobs-burgers">
+                        <img src="/img/BobsBurgers.png" alt="bobs-burger" id="bobs-burgers">
+                    </div>
+                </div>
             </div>
-            <br />
-            {{!-- SUBMIT BUTTON --}}
-            <button type="submit" class="btn submitBtn" id="button-submit">
-            Submit
-            </button>
-        </form>
+            {{!-- COLUMN 2 --}}
+            <div class="column">
+                {{!-- FORM TO ADD A BURGER  --}}
+                <form id="add-burger" action="/burgers" class="create-form" method="POST">
+                    <div class="form-group">
+                        {{!-- BURGER INPUT TITLE --}}
+                        <div class="order-burger-title"><label for="name">Order Burger</label></div>
+                        <br />
+                        {{!-- INPUT FEILD --}}
+                        <input type="text" class="form-control text-area" id="name" name="name"
+                            placeholder="Enter burger name here...." style="align-self: center;">
+                    </div>
+                    {{!-- SUBMIT BUTTON --}}
+                    <button type="submit" class="btn submitBtn" id="button-submit">Submit</button>
+                </form>
+            </div>
+        </div>
     </main>
 </div>
