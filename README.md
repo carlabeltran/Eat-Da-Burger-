@@ -1,8 +1,8 @@
-# ![icon](public/img/output-onlinepngtools.png)  Eat-Da-Burger! 
+# ![Image 1](public/img/edb.png)
 
-### Welcome to Eat Da Burger App! 👋
+## Welcome to Eat Da Burger App! 👋
 
-##### This restaurant app lets users order burgers by inputing the name of the burger they'd like to eat.
+#### This restaurant app lets users order burgers by inputing the name of the burger they'd like to eat.
 
 ## ✨ Demo
 
@@ -49,6 +49,9 @@ heroku & github details
 ``````
 ## 💯 Usage
 
+-----
+## 🌈 Features
+
 *****
 
 ## 💡 Technology
@@ -63,10 +66,8 @@ This app requires a number of programs:
 	* [dotenv](https://www.npmjs.com/package/dotenv)
 
 
------
-## 🌈 Features
 
-
+## 🔮 Future work
 ---
 ## 🤝 Contribute
 
