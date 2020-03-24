@@ -1,7 +1,7 @@
 require("dotenv").config();
 //SET UP MYSQL CONNECTION
 var mysql = require("mysql");
-var connection;
+let connection;
 
 if (process.env.JAWSDB_URL) {
   //CONNECT TO JAWSDB(HEROKU)
