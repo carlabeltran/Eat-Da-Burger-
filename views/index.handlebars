@@ -61,11 +61,13 @@
                     {{#if this.devoured}}
                     {{!-- ALL BURGERS THAT HAVE BEEN EATEN PLACE HERE --}}
                     <div class="eaten-burgers">
-                        <div type="button" class="btn btn-success burgers_devoured">
-                            <input class="devoured-burgers" type="hidden" name="name" data-id="{{this.name}}"><p ><span class="eaten-text"></span>{{this.name}}</p>
-                        </div>
-                        <br />
-                        <button data-id="{{this.id}}" class="delete-burger">Delete</button>
+                        <form action="/burgers/{{this.id}}?_method=DELETE" method="POST" class="delete-button">
+                            <div type="button" class="btn btn-success burgers_devoured">
+                                <input class="devoured-burgers" type="hidden" name="name" data-id="{{this.id}}"><p><span class="eaten-text"></span>{{this.name}}</p>
+                            </div>
+                            <br />
+                            <button name="name" data-id="{{this.id}}" class="delete-burger">Delete</button>
+                        </form>
                     </div>
                     {{/if}}
                     {{/each}}
