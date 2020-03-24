@@ -62,11 +62,10 @@
                     {{!-- ALL BURGERS THAT HAVE BEEN EATEN PLACE HERE --}}
                     <div class="eaten-burgers">
                         <div type="button" class="btn btn-success burgers_devoured">
-                            <input class="form-control" type="hidden" name="name" data-id="{{this.name}}" readonly><p aria-readonly="true"><span class="burgers_devoured" readonly></span>{{this.name}}</p>
+                            <input class="devoured-burgers" type="hidden" name="name" data-id="{{this.name}}"><p ><span class="eaten-text"></span>{{this.name}}</p>
                         </div>
                         <br />
-                        {{!-- THIS BUTTON IS HIDDEN & AS A QUICK SOLUTION FOR STYLING PURPOSE --}}
-                        <button data-id="{{this.id}}" class="devoured-burger hidden">Devour It!</button>
+                        <button data-id="{{this.id}}" class="delete-burger">Delete</button>
                     </div>
                     {{/if}}
                     {{/each}}
@@ -77,11 +76,13 @@
         </div>
         {{!-- FORM TO ADD A BURGER  --}}
         <form id="add-burger" action="/burgers" class="create-form" method="POST">
-            {{!-- BURGER INPUT TITLE --}}
-            <label for="burger">Burger Name</label>
-            <br />
-            {{!-- INPUT FEILD --}}
-            <input type="text" class="form-control" id="burger" name="name" placeholder="Enter burger name here...." required>
+            <div class="form-group">
+                {{!-- BURGER INPUT TITLE --}}
+                <label for="name">Burger Name</label>
+                <br />
+                {{!-- INPUT FEILD --}}
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter burger name here....">
+            </div>
             <br />
             {{!-- SUBMIT BUTTON --}}
             <button type="submit" class="btn submitBtn" id="button-submit">

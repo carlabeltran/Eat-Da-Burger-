@@ -12,7 +12,7 @@ var burger = require("../models/burger.js");
 //GET ROUTE DISPLAY ALL BURGERS
 router.get("/", function (req, res) {
   //CALLBACK RESPONSE CALLING SELECT ALL BURGERS
-  burger.all(function (data) {
+  burger.all(function(data) {
     //HANDLEBARS
     var hbsObject = {
       burgers: data
@@ -25,33 +25,27 @@ router.get("/", function (req, res) {
 });
 ///////////////////////////////////////////////////////////////
 //POST ROUTE TO CREATE BURGERS
-router.post("/burgers", function (req, res) {
+router.post("/burgers", function(req, res) {
   burger.create([
-    "name"
+    "name", "devoured"
   ], [
-    req.body.name
-  ], function(result) {
+    req.body.name, req.body.devoured
+  ], function() {
     console.log("---------RESULTS FOR CREATE BURGER------------");
-    console.log(result);
-    //SEND BACK ID OF NEW BURGER
-    res.json("index", { id: result.insertId });
-    res.redirect("/");
-  }
-  );
+      res.redirect("/");
+  });
 });
 ///////////////////////////////////////////////////////////////
 //PUT ROUTE TO UPDATE BURGERS
-router.put("/burgers/:id", function (req, res) {
+router.put("/burgers/:id", function(req, res) {
   var condition = "id = " + req.params.id;
-
   console.log("condition", condition);
-  burger.update(
-    {
+  burger.update({
       devoured: true
-    },
-    condition, function(data) {
+    }, condition, function(data) {
+
       res.redirect("/");
-    });
+  });
 });
 router.delete("/burgers/:id", function (req, res) {
   var condition = "id = " + req.params.id;
@@ -65,8 +59,6 @@ router.delete("/burgers/:id", function (req, res) {
     res.redirect("/");
   });
 });
-
-
 
 
 //EXPORT ROUTES FOR SERVER.JS TO USE
