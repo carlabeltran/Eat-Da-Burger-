@@ -2,7 +2,7 @@
 
 ## Welcome to Eat Da Burger App! 👋
 
-#### This restaurant app lets users order burgers by inputing the name of the burger they'd like to eat.
+Eat Da Burger! is a fun restaurant app that lets users input the names of burgers they'd like to eat, and then the best part....devour them! (yum).
 
 ## ✨ Demo
 
@@ -18,9 +18,69 @@ This application is delployed at [Eat Da Burger App](https://eattburgerapp.herok
 
 *****
 
-## ⬇️️ Installation
+## 📕 User Story
+
+```
+AS A user, I need to be able to order burgers.
+I WANT to be able to add new burger to my order.
+SO THAT I can devour them.
+```
+
+## 💼 Business Context
+
+```
+AS A resturant, I need to be able to recieve burgers orderd form client.
+I WANT to be able to clear the burger once the client has finished devouring the burger.
+SO THAT I can prepare for the next burgers.
+```
+
+## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Directory structure
+
+MVC design pattern files and directories should look like the following structure:
+
+```
+.
+├── config
+│   ├── connection.js
+│   └── orm.js
+│ 
+├── controllers
+│   └── burgers_controller.js
+│
+├── db
+│   ├── schema.sql
+│   └── seeds.sql
+│
+├── models
+│   └── burger.js
+│ 
+├── node_modules
+│ 
+├── package.json
+│
+├── public
+│   └── assets
+│       ├── css
+│       │   └── burger_style.css
+│       └── img
+│           └── burger.png
+│   
+│
+├── server.js
+│
+└── views
+    ├── index.handlebars
+    └── layouts
+        └── main.handlebars
+```
+
+## ⬇️️ Installation
+
+Install the dependencies and devDependencies and start the server.
 
 ### Local Environment Setup
 
@@ -46,16 +106,46 @@ node server.js
 ## ⚙️ Configuration
 ``````
 heroku & github details
+
 ``````
 ## 💯 Usage
+
+When the user submits a burger's name, the app displays the burger on the left side of the page -- waiting to be devoured.  Each burger in the **Available Burgers** area has a `Devour it!` button underneath it. When the user clicks the button, the burger moves to the right side of the page, under **Eaten Burgers**. Each burger in the **Eaten Burgers** has a button right below it `Delete` button. When the user clicks the button, the selected burger gets deleted from the database.
+
+#### Request burger
+Type the name of the burger in the input field at the bottom of the page and submit.
+
+#### Devour Burger
+
+
+#### Delete Burger
+
 
 -----
 ## 🌈 Features
 
+Responsive Design & User Friendly
+
+Menu
+
+Delete Button 
+
 *****
 
-## 💡 Technology
+## 💡 Tech
+
+Full-stack MVC web app made with 
+
+* HTML
+* CSS
+* Google Fonts
+* MySQL
+* JawsDB
+* Heroku
+* Animate.css
+
 This app requires a number of programs:
+
 * [Node.js](https://nodejs.org/en/)
 * [MySQL Workbench](https://www.mysql.com/products/workbench/)
 * NPM Packages: 
@@ -65,12 +155,21 @@ This app requires a number of programs:
 	* [MySQL](https://www.npmjs.com/package/mysql)
 	* [dotenv](https://www.npmjs.com/package/dotenv)
 
-
+---
 
 ## 🔮 Future work
+
+- Adding discricptions to the burgers of what they contain
+- Adding animation of a burger being built when requested
+- Adding animation of a burger being devoured
+- Adding pricing
+- Adding fries and drink to the options
+
 ---
+
 ## 🤝 Contribute
 
+Please read [CONTRIBUTING.md](https://gist.github.com/carlabeltran) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ----
 ## 🚨 Tests
@@ -91,9 +190,13 @@ ___
 
 ## ‍👩🏻‍💼 Author
 
-![Profile Picture](${image})
+![Profile Picture]()
 
 **Carla Beltran**
+
+Full-stack Web Software Developer
+
+> I had so much fun building and designing this application. One big challenge I faced was organizing all the moving parts, remembering where the data was being imported and understanding how the data was being requested. 
 
 - Email: [@carlabeltran](https://github.com/carlabeltran14@icloud.com)
 - Linkdin: [@carlabeltran](https://github.com/carlabeltran)
