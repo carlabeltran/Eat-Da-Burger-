@@ -29,8 +29,7 @@ router.post("/burgers", function(req, res) {
   burger.create(
     ["name", "devoured"],
     [req.body.name, req.body.devoured],
-    function (result) {
-      res.json({ id: result.insertId });
+    function () {
       console.log("---------RESULTS FOR CREATE BURGER------------");
       res.redirect("/");
     }
@@ -54,12 +53,7 @@ router.put("/burgers/:id", function(req, res) {
 router.delete("/burgers/:id", function(req, res) {
   var condition = "id = " + req.params.id;
   console.log("condition", condition);
-  burger.delete(condition, function(result) {
-    if (result.changedRows === 0) {
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
-    }
+  burger.delete(condition, function() {
     res.redirect("/");
   });
 });
