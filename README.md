@@ -190,7 +190,7 @@ ___
 
 ## ‍👩🏻‍💼 Author
 
-![Profile Picture]()
+![Profile Picture](https://github.com/carlabeltran/Eat-Da-Burger-/blob/master/public/img/profilepic250x350.png?raw=true)
 
 **Carla Beltran**
 
