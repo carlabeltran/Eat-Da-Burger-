@@ -29,8 +29,8 @@ SO THAT I can devour them.
 ## 💼 Business Context
 
 ```
-AS A resturant, I need to be able to recieve burgers orderd form client.
-I WANT to be able to clear the burger once the client has finished devouring the burger.
+AS A resturant, I need to be able to recieve burgers orderd from my customers.
+I WANT to be able to clear the burger once the customer has finished devouring the burger.
 SO THAT I can prepare for the next burgers.
 ```
 
@@ -110,25 +110,26 @@ heroku & github details
 ``````
 ## 💯 Usage
 
-When the user submits a burger's name, the app displays the burger on the left side of the page -- waiting to be devoured.  Each burger in the **Available Burgers** area has a `Devour it!` button underneath it. When the user clicks the button, the burger moves to the right side of the page, under **Eaten Burgers**. Each burger in the **Eaten Burgers** has a button right below it `Delete` button. When the user clicks the button, the selected burger gets deleted from the database.
-
 #### Request burger
-Type the name of the burger in the input field at the bottom of the page and submit.
+
+Type the name of the burger in the input field at the bottom of the page and submit. Next to the submit button I have added some suggestions based of the show bobs burgers. When the user submits a burger's name, the app displays the burger on the left side of the page -- waiting to be devoured.  
 
 #### Devour Burger
 
+Each burger in the **Available Burgers** area has a `Devour it!` button underneath it. When the user clicks the button, the burger moves to the right side of the page, under **Eaten Burgers**.
 
 #### Delete Burger
 
+Each burger in the **Eaten Burgers** has a button right below it `Delete` button. When the user clicks the button, the selected burger gets deleted from the database.
 
 -----
 ## 🌈 Features
 
-Responsive Design & User Friendly
+* Responsive Design & User Friendly
 
-Menu
+* Menu
 
-Delete Button 
+* Delete Button 
 
 *****
 
@@ -151,7 +152,7 @@ This app requires a number of programs:
 * NPM Packages: 
 	* [Express](https://www.npmjs.com/package/express)
 	* [Express-Handlers](https://www.npmjs.com/package/express-handlebars)
-	* [Body-Override](https://www.npmjs.com/package/method-override)
+	* [Method-Override](https://www.npmjs.com/package/method-override)
 	* [MySQL](https://www.npmjs.com/package/mysql)
 	* [dotenv](https://www.npmjs.com/package/dotenv)
 
@@ -159,7 +160,7 @@ This app requires a number of programs:
 
 ## 🔮 Future work
 
-- Adding discricptions to the burgers of what they contain
+- Adding descricptions to the burgers of what they contain
 - Adding animation of a burger being built when requested
 - Adding animation of a burger being devoured
 - Adding pricing
@@ -173,6 +174,8 @@ Please read [CONTRIBUTING.md](https://gist.github.com/carlabeltran) for details 
 
 ----
 ## 🚨 Tests
+
+No tests were run.
 
 ----
 
@@ -188,7 +191,7 @@ There are lot's of ways to support me! Give this repository a ⭐, tweet about i
 This project is ${license} licensed.
 ___
 
-## ‍👩🏻‍💼 Author
+## 👩🏻 Author
 
 ![Profile Picture](https://github.com/carlabeltran/Eat-Da-Burger-/blob/master/public/img/profilepic250x350.png?raw=true)
 
